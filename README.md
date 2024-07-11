@@ -1,6 +1,7 @@
 # MyPrivacy
 
 ⚠️This project is under development, please wait to final release!⚠️
+<br>
 ⚠️The code may not be complete or may contain errors.⚠️
 
 
@@ -13,11 +14,16 @@ That is why we have created this project which saves everything locally and encr
 # TRY IT!
 [Official website ](https://codeofvictor.github.io/MyPrivacy/)
 
+---
+
 ## License
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
-This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+This work is licensed under a [Licencia Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International][cc-by-nc-sa].
 
+[cc-by-nc-sa]: https://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-shield]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
 
  You are free to:
 
@@ -33,18 +39,17 @@ Under the following terms:
     No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
 
-
 ---
 
 ## Pending tasks
 
-- Create index
-- Create navbar
-- Add white and dark theme
-- Add language support
-- Add calendar with event system
-- Add tasks to do
-- Add notes
+- ✅ Create index
+- ❌ Create navbar
+- ❌ Add white and dark theme
+- ❌ Add language support
+- ❌ Add calendar with event system
+- ❌ Add tasks to do
+- ❌ Add notes
 
 ---
 
