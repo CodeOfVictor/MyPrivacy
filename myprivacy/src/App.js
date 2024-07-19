@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './components/index/Home';
+import Application from './components/Application';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Router basename="/MyPrivacy">
         <Routes>
           <Route exact path="/" element={<Home />} />
+          <Route exact path="/app" element={<Application />} />
         </Routes>
       </Router>
     </Grid>

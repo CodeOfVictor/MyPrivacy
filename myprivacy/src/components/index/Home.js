@@ -30,12 +30,28 @@ function Home() {
             <Typography variant="h4">Focused on privacy</Typography>
 
             <Button variant="contained" 
-                style={{
-                    marginTop: '40px', 
-                    padding: '16px 32px',
-                    fontSize: '18px'
-                }}
-            >Coming soon</Button>
+              style={{
+                marginTop: '40px', 
+                padding: '16px 32px',
+                fontSize: '18px'
+              }}
+            >
+              Coming soon
+            </Button>
+
+            <Button 
+              variant="contained" 
+              color="secondary"
+              style={{
+                marginTop: '20px', 
+                padding: '16px 32px',
+                fontSize: '18px'
+              }}
+              onClick={() => window.open('https://github.com/CodeOfVictor/MyPrivacy', '_blank')}
+            >
+              Github project
+            </Button>
+
         </Box>
       </Grid>
     </Grid>
