@@ -13,9 +13,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 const pages = ['Calendar', 'Notes', 'To Do'];
-const settings = ['Delete all', 'Theme', 'Language', 'Logout'];
+const settings = ['Options', 'Logout'];
 
-function ResponsiveAppBar({ setActiveComponent }) {
+function Navbar({ setActiveComponent, openOptionsModal }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -34,6 +34,13 @@ function ResponsiveAppBar({ setActiveComponent }) {
         setAnchorElUser(null);
     };
 
+    const handleSettingClick = (setting) => {
+        if (setting === 'Options') {
+            openOptionsModal();
+        }
+        handleCloseUserMenu();
+    };
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -44,13 +51,13 @@ function ResponsiveAppBar({ setActiveComponent }) {
                         component="a"
                         href="#app-bar-with-responsive-menu"
                         sx={{
-                        mr: 2,
-                        display: { xs: 'none', md: 'flex' },
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        letterSpacing: '.3rem',
-                        color: 'inherit',
-                        textDecoration: 'none',
+                            mr: 2,
+                            display: { xs: 'none', md: 'flex' },
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
                         }}
                     >
                         MyPrivacy
@@ -87,7 +94,7 @@ function ResponsiveAppBar({ setActiveComponent }) {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={() => { setActiveComponent(page); handleCloseNavMenu(); }}>
-                                <Typography textAlign="center">{page}</Typography>
+                                    <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -98,27 +105,27 @@ function ResponsiveAppBar({ setActiveComponent }) {
                         component="a"
                         href="#app-bar-with-responsive-menu"
                         sx={{
-                        mr: 2,
-                        display: { xs: 'flex', md: 'none' },
-                        flexGrow: 1,
-                        fontFamily: 'monospace',
-                        fontWeight: 700,
-                        letterSpacing: '.3rem',
-                        color: 'inherit',
-                        textDecoration: 'none',
+                            mr: 2,
+                            display: { xs: 'flex', md: 'none' },
+                            flexGrow: 1,
+                            fontFamily: 'monospace',
+                            fontWeight: 700,
+                            letterSpacing: '.3rem',
+                            color: 'inherit',
+                            textDecoration: 'none',
                         }}
                     >
                         MyPrivacy
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
-                        <Button
-                            key={page}
-                            onClick={() => { setActiveComponent(page); handleCloseNavMenu(); }}
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                        >
-                            {page}
-                        </Button>
+                            <Button
+                                key={page}
+                                onClick={() => { setActiveComponent(page); handleCloseNavMenu(); }}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                {page}
+                            </Button>
                         ))}
                     </Box>
 
@@ -143,10 +150,10 @@ function ResponsiveAppBar({ setActiveComponent }) {
                             }}
                             open={Boolean(anchorElUser)}
                             onClose={handleCloseUserMenu}
-                            >
+                        >
                             {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                <Typography textAlign="center">{setting}</Typography>
+                                <MenuItem key={setting} onClick={() => handleSettingClick(setting)}>
+                                    <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -156,4 +163,4 @@ function ResponsiveAppBar({ setActiveComponent }) {
         </AppBar>
     );
 }
-export default ResponsiveAppBar;
+export default Navbar;

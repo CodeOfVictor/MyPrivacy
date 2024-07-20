@@ -44,12 +44,13 @@ Under the following terms:
 ## Pending tasks
 
 - ✅ Create index
-- ❌ Create navbar
+- ✅ Create navbar
 - ❌ Add white and dark theme
 - ❌ Add language support
-- ❌ Add calendar with event system
-- ❌ Add tasks to do
+- ✅ Add calendar with event system
 - ❌ Add notes
+- ❌ Add tasks to do
+- ❌ Add funcionality
 
 ---
 
