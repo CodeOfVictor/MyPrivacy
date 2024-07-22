@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useTranslation } from 'react-i18next';
 
-const pages = ['Calendar', 'Notes', 'To Do'];
+const pages = ['Calendar', 'Notes', 'To do'];
 const settings = ['Options', 'Logout'];
 
 function Navbar({ setActiveComponent, openOptionsModal }) {

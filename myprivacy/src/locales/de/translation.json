@@ -1,8 +1,11 @@
 {
+    "AppName": "MyPrivacy",
+    "Open settings": "Einstellungen öffnen",
+
     "Calendar": "Kalender",
-    "Events": "Ereignisse",
+    "Events": "Veranstaltungen",
     "Notes": "Notizen",
-    "To Do": "Aufgaben",
+    "To do": "Aufgaben",
 
     "Options": "Optionen",
     "Logout": "Abmelden",
@@ -17,5 +20,19 @@
     "DELETE": "LÖSCHEN",
     "Save and close": "Speichern und schließen",
 
-    "Next days": "Nächste 7 Tage"
+    "Date": "Datum",
+    "Title": "Titel",
+    "Description": "Beschreibung",
+    "Save": "Speichern",
+    "Edit": "Bearbeiten",
+    "Delete": "Löschen",
+    "Completed": "Abgeschlossen",
+    "Next days": "Nächste Tage",
+
+    "Add Task": "Aufgabe hinzufügen",
+    "Edit Task": "Aufgabe bearbeiten",
+    "Add Note": "Notiz hinzufügen",
+    "Edit Note": "Notiz bearbeiten",
+    "Add Event": "Ereignis hinzufügen",
+    "Edit Event": "Ereignis bearbeiten"
 }

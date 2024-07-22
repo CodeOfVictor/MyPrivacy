@@ -1,4 +1,7 @@
 {
+    "AppName": "MyPrivacy",
+    "Open settings": "Open settings",
+
     "Calendar": "Calendar",
     "Events": "Events",
     "Notes": "Notes",
@@ -17,5 +20,19 @@
     "DELETE": "DELETE",
     "Save and close": "Save and close",
 
-    "Next days": "Next 7 days"
+    "Date": "Date",
+    "Title": "Title",
+    "Description": "Description",
+    "Save": "Save",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Completed": "Completed",
+    "Next days": "Next days",
+
+    "Add Task": "Add Task",
+    "Edit Task": "Edit Task",
+    "Add Note": "Add Note",
+    "Edit Note": "Edit Note",
+    "Add Event": "Add Event",
+    "Edit Event": "Edit Event"
 }

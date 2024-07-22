@@ -3,8 +3,11 @@ import { Accordion, AccordionSummary, AccordionDetails, AccordionActions, Button
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { useTranslation } from 'react-i18next';
 
 function Event({ date, title, description, defaultExpanded, onEdit, onDelete }) {
+  const { t } = useTranslation();
+
     return (
         <Accordion defaultExpanded={defaultExpanded}>
             <AccordionSummary
@@ -20,11 +23,11 @@ function Event({ date, title, description, defaultExpanded, onEdit, onDelete }) 
             <AccordionActions>
                 {/* Edit button */}
                 <Button color="info" startIcon={<EditIcon />} onClick={(e) => { e.stopPropagation(); onEdit(); }}>
-                    Edit
+                    {t('Edit')}
                 </Button>
                 {/* Delete button */}
                 <Button color="error" startIcon={<DeleteIcon />} onClick={(e) => { e.stopPropagation(); onDelete(); }}>
-                    Delete
+                    {t('Delete')}
                 </Button>
             </AccordionActions>
         </Accordion>

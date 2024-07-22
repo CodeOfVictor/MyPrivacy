@@ -218,7 +218,7 @@ function Calendar() {
             />
           </Box>
           <Box textAlign="center">
-            <Typography variant="h4" gutterBottom color="textSecondary">{t('Next 7 Days')}</Typography>
+            <Typography variant="h4" gutterBottom color="textSecondary">{t('Next days')}</Typography>
             <Grid>
               {getUpcomingEvents().map((event, index) => (
                 <Event
