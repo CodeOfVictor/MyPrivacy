@@ -2,14 +2,18 @@ import * as React from 'react';
 import { Box, Typography, Card, CardContent } from '@mui/material';
 import Checkbox from '@mui/material/Checkbox';
 
-function Task({ state, title, date, description }) {
+function Task({ state, title, date, description, onClick, onCheckboxChange }) {
     return (
         <Box sx={{ minWidth: 275, marginBottom: '1%', marginLeft: '1%' }}>
-            <Card variant="outlined">
+            <Card variant="outlined" onClick={onClick}>
                 <CardContent style={{ textAlign: 'center' }}>
-                    <Box>
+                    <Box display="flex" alignItems="center">
+                        <Checkbox
+                            checked={state}
+                            onChange={onCheckboxChange} // Trigger the function when checkbox is changed
+                            onClick={(event) => event.stopPropagation()} // Prevent click event from propagating to the card
+                        />
                         <Typography variant="h5" component="div">
-                            <Checkbox />
                             {title}
                         </Typography>
                     </Box>
