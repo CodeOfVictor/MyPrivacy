@@ -11,11 +11,13 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import { useTranslation } from 'react-i18next';
 
 const pages = ['Calendar', 'Notes', 'To Do'];
 const settings = ['Options', 'Logout'];
 
 function Navbar({ setActiveComponent, openOptionsModal }) {
+    const { t } = useTranslation();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -60,7 +62,7 @@ function Navbar({ setActiveComponent, openOptionsModal }) {
                             textDecoration: 'none',
                         }}
                     >
-                        MyPrivacy
+                        {t('AppName')}
                     </Typography>
 
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -94,7 +96,7 @@ function Navbar({ setActiveComponent, openOptionsModal }) {
                         >
                             {pages.map((page) => (
                                 <MenuItem key={page} onClick={() => { setActiveComponent(page); handleCloseNavMenu(); }}>
-                                    <Typography textAlign="center">{page}</Typography>
+                                    <Typography textAlign="center">{t(page)}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
@@ -115,7 +117,7 @@ function Navbar({ setActiveComponent, openOptionsModal }) {
                             textDecoration: 'none',
                         }}
                     >
-                        MyPrivacy
+                        {t('AppName')}
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
@@ -124,13 +126,13 @@ function Navbar({ setActiveComponent, openOptionsModal }) {
                                 onClick={() => { setActiveComponent(page); handleCloseNavMenu(); }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                {page}
+                                {t(page)}
                             </Button>
                         ))}
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open settings">
+                        <Tooltip title={t('Open settings')}>
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="?" src="/static/images/avatar/2.jpg" />
                             </IconButton>
@@ -153,7 +155,7 @@ function Navbar({ setActiveComponent, openOptionsModal }) {
                         >
                             {settings.map((setting) => (
                                 <MenuItem key={setting} onClick={() => handleSettingClick(setting)}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                                    <Typography textAlign="center">{t(setting)}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>

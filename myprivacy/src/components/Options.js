@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Box, Typography, Modal, Switch, Button, InputLabel, MenuItem, FormControl, Select, Stack } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useThemeContext } from '../ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 const style = {
     position: 'absolute',
@@ -16,12 +17,15 @@ const style = {
 };
 
 function Options({ open, handleClose }) {
-    const { darkMode, toggleTheme } = useThemeContext(); // Get the current theme mode and toggle function
-    const [language, setLanguage] = React.useState('English'); // Default language
+    const { darkMode, toggleTheme } = useThemeContext();
+    const { i18n } = useTranslation();
+    const [language, setLanguage] = React.useState(i18n.language || 'en');
 
-    // Handle language selection change
     const handleChangeLanguage = (event) => {
-        setLanguage(event.target.value);
+        const selectedLanguage = event.target.value;
+        setLanguage(selectedLanguage);
+        i18n.changeLanguage(selectedLanguage);
+        localStorage.setItem('i18nextLng', selectedLanguage); // Save the selected language to localStorage
     };
 
     return (
@@ -33,45 +37,41 @@ function Options({ open, handleClose }) {
         >
             <Box sx={style}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                    Options
+                    {i18n.t('Options')}
                 </Typography>
 
                 <Stack spacing={2} sx={{ mt: 2 }}>
-                    {/* Dark Theme Switch */}
                     <Stack direction="row" alignItems="center" spacing={2}>
-                        <Typography>Dark Theme</Typography>
-                        <Switch checked={darkMode} onChange={toggleTheme} /> {/* Toggle dark mode */}
+                        <Typography>{i18n.t('Dark theme')}</Typography>
+                        <Switch checked={darkMode} onChange={toggleTheme} />
                     </Stack>
 
-                    {/* Language Selector */}
                     <Stack direction="row" alignItems="center" spacing={2}>
-                        <Typography>Language</Typography>
+                        <Typography>{i18n.t('Language')}</Typography>
                         <FormControl fullWidth>
-                            <InputLabel id="language-select-label">Language</InputLabel>
+                            <InputLabel id="language-select-label">{i18n.t('Language')}</InputLabel>
                             <Select
                                 labelId="language-select-label"
                                 id="language-select"
                                 value={language}
-                                onChange={handleChangeLanguage} // Handle language change
-                                label="Language"
+                                onChange={handleChangeLanguage}
+                                label={i18n.t('Language')}
                             >
-                                <MenuItem value={'English'}>English</MenuItem>
-                                <MenuItem value={'Spanish'}>Spanish</MenuItem>
-                                <MenuItem value={'German'}>German</MenuItem>
+                                <MenuItem value="en">{i18n.t('English')}</MenuItem>
+                                <MenuItem value="es">{i18n.t('Spanish')}</MenuItem>
+                                <MenuItem value="de">{i18n.t('German')}</MenuItem>
                             </Select>
                         </FormControl>
                     </Stack>
 
-                    {/* Delete Button */}
                     <Stack direction="row" alignItems="center" spacing={2}>
-                        <Typography>Delete All</Typography>
-                        <Button color="error" endIcon={<DeleteIcon />}>Delete</Button>
+                        <Typography>{i18n.t('Delete All')}</Typography>
+                        <Button color="error" endIcon={<DeleteIcon />}>{i18n.t('DELETE')}</Button>
                     </Stack>
                 </Stack>
 
-                {/* Save and Close Button */}
                 <Button variant="contained" color="primary" sx={{ mt: 3 }} onClick={handleClose}>
-                    Save and Close
+                    {i18n.t('Save and close')}
                 </Button>
             </Box>
         </Modal>

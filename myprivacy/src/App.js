@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import Home from './components/index/Home';
 import Application from './components/Application';
+import './i18n';
 
 function App() {
   return (
