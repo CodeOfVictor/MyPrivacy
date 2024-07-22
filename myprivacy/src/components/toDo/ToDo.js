@@ -1,50 +1,38 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Checkbox from '@mui/material/Checkbox';
+import { Grid, Typography, Box, Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import Task from './Task';
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+function Notes() {
+  const notes = [
+    { state: false, title: 'Title 1', date: '01/01/2021', description: 'Description 1' },
+    { state: true, title: 'Title 2', date: '02/02/2022', description: 'Description 2' },
+    { state: false, title: 'Title 3', date: '03/03/2023', description: 'Description 3' },
+  ];
 
-const card = (
-  <React.Fragment>
-    <CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-      </Typography>
-      <Typography variant="h5" component="div">
-        <Checkbox /> Title
-      </Typography>
-      <Typography sx={{ mb: 1.5 }} color="text.secondary">
-        1/1/1900
-      </Typography>
-      <Typography variant="body2">
-        well meaning and kindly.
-        <br />
-        {'"a benevolent smile"'}
-      </Typography>
-    </CardContent>
-    <CardActions>
-      <Button size="small">Learn More</Button>
-    </CardActions>
-  </React.Fragment>
-);
-
-function ToDo() {
   return (
-    <Box sx={{ minWidth: 275 }}>
-      <Card variant="outlined">{card}</Card>
-    </Box>
+    <Grid container>
+      <Grid container style={{ justifyContent: 'space-between', marginTop: '1%', marginBottom: '1%' }} alignItems="center">
+        <Grid item style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1, marginRight: '-2%' }}>
+          <Typography variant="h4" style={{ textAlign: 'center', width: '100%' }}>To Do</Typography>
+        </Grid>
+        <Grid item style={{ marginRight: '2%' }}>
+          <Button
+            variant="outlined"
+            style={{ width: '38px', height: '38px', minWidth: 'auto' }}
+          >
+            <AddIcon />
+          </Button>
+        </Grid>
+      </Grid>
+
+      <Grid container style={{ marginLeft: '2%', marginRight: '2%' }}>
+        {notes.map((note, index) => (
+          <Task key={index} title={note.title} date={note.date} description={note.description} />
+        ))}
+      </Grid>
+    </Grid>
   );
 }
 
-export default ToDo;
+export default Notes;

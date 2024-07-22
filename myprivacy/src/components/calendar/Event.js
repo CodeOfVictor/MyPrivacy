@@ -3,7 +3,7 @@ import { Accordion, AccordionSummary, AccordionDetails, AccordionActions, Button
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function Event({ title, description, defaultExpanded }) {
+function Event({ date, title, description, defaultExpanded }) {
     return (
         <Accordion defaultExpanded={defaultExpanded}>
             <AccordionSummary
@@ -11,7 +11,7 @@ function Event({ title, description, defaultExpanded }) {
                 aria-controls={`${title}-content`}
                 id={`${title}-header`}
             >
-                <Typography variant="h6">{title}</Typography>
+                <Typography variant="h6">{date}: {title}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <Typography>{description}</Typography>

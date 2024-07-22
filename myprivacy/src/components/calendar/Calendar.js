@@ -7,13 +7,6 @@ import dayjs from 'dayjs';
 import Badge from '@mui/material/Badge';
 import { PickersDay } from '@mui/x-date-pickers/PickersDay';
 import { DayCalendarSkeleton } from '@mui/x-date-pickers/DayCalendarSkeleton';
-import Accordion from '@mui/material/Accordion';
-import AccordionActions from '@mui/material/AccordionActions';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import Button from '@mui/material/Button';
-import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Event from './Event'; // Importa el componente Event
 
@@ -100,17 +93,17 @@ function Calendar() {
 
         <Grid>
           <Typography variant="h4">Last 7 days</Typography>
-          <Event title="Accordion 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={true} />
-          <Event title="Accordion 2" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
-          <Event title="Accordion Actions" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
+          <Event date="1/1/1900" title="Accordion 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={true} />
+          <Event date="1/1/1900" title="Accordion 2" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
+          <Event date="1/1/1900" title="Accordion Actions" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
         </Grid>
       </Grid>
 
       <Grid style={{ width: '60%', marginRight: '-10%' }}>
         <Typography variant="h4">Events</Typography>
-        <Event title="Accordion 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
-        <Event title="Accordion 2" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
-        <Event title="Accordion Actions" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
+        <Event date="1/1/1900" title="Accordion 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
+        <Event date="1/1/1900" title="Accordion 2" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
+        <Event date="1/1/1900" title="Accordion Actions" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
       </Grid>
     </Grid>
   );
