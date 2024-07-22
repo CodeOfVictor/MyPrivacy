@@ -6,9 +6,9 @@ function Task({ state, title, date, description }) {
     return (
         <Box sx={{ minWidth: 275, marginBottom: '1%', marginLeft: '1%' }}>
             <Card variant="outlined">
-                <CardContent>
+                <CardContent style={{ textAlign: 'center' }}>
                     {/* Wrap the title in a Box to center it */}
-                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Box>
                         <Typography variant="h5" component="div">
                             <Checkbox />
                             {title}

@@ -4,7 +4,7 @@ import { Box, Typography, Card, CardContent } from '@mui/material';
 function Note({ title, date, description }) {
   return (
     <Box sx={{ minWidth: 275, marginBottom: '1%', marginLeft: '1%' }}>
-      <Card variant="outlined">
+      <Card variant="outlined" style={{ textAlign: 'center' }}>
         <CardContent>
           <Typography variant="h5" component="div">
             {title}

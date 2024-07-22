@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Box, Typography, Modal, Switch, Button, InputLabel, MenuItem, FormControl, Select, Stack } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useThemeContext } from '../ThemeContext';
 
 const style = {
     position: 'absolute',
@@ -15,15 +16,12 @@ const style = {
 };
 
 function Options({ open, handleClose }) {
-    const [language, setLanguage] = React.useState('English');
-    const [darkMode, setDarkMode] = React.useState(true);
+    const { darkMode, toggleTheme } = useThemeContext(); // Get the current theme mode and toggle function
+    const [language, setLanguage] = React.useState('English'); // Default language
 
+    // Handle language selection change
     const handleChangeLanguage = (event) => {
         setLanguage(event.target.value);
-    };
-
-    const handleChangeTheme = (event) => {
-        setDarkMode(event.target.checked);
     };
 
     return (
@@ -42,7 +40,7 @@ function Options({ open, handleClose }) {
                     {/* Dark Theme Switch */}
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <Typography>Dark Theme</Typography>
-                        <Switch checked={darkMode} onChange={handleChangeTheme} />
+                        <Switch checked={darkMode} onChange={toggleTheme} /> {/* Toggle dark mode */}
                     </Stack>
 
                     {/* Language Selector */}
@@ -54,7 +52,7 @@ function Options({ open, handleClose }) {
                                 labelId="language-select-label"
                                 id="language-select"
                                 value={language}
-                                onChange={handleChangeLanguage}
+                                onChange={handleChangeLanguage} // Handle language change
                                 label="Language"
                             >
                                 <MenuItem value={'English'}>English</MenuItem>
