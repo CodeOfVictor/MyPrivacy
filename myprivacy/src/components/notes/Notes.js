@@ -1,23 +1,49 @@
 import * as React from 'react';
-import { Grid, Typography, Button, Modal, Box, Stack, TextField } from '@mui/material';
+import CryptoJS from 'crypto-js';
+import { Grid, Typography, Button, Modal, Box, Stack, TextField, useTheme } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Note from './Note';
 import { useTranslation } from 'react-i18next';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #1976d2',
-  boxShadow: 24,
-  p: 4,
+const useStyles = (theme) => ({
+  modalStyle: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '90%',
+    maxWidth: 600, // Maximum width of the modal
+    bgcolor: 'background.paper',
+    border: `2px solid ${theme.palette.primary.main}`,
+    boxShadow: 24,
+    p: 4,
+    [theme.breakpoints.down('sm')]: {
+      width: '95%',
+    },
+  },
+});
+
+const encryptData = (data, masterKey) => {
+  return CryptoJS.AES.encrypt(JSON.stringify(data), masterKey).toString();
 };
 
-function Notes() {
+const decryptData = (ciphertext, masterKey) => {
+  const bytes = CryptoJS.AES.decrypt(ciphertext, masterKey);
+  return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+};
+
+const getCurrentDate = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+function Notes({ masterKey }) {
+  const theme = useTheme();
+  const classes = useStyles(theme);
   const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
@@ -25,16 +51,17 @@ function Notes() {
   const [notes, setNotes] = React.useState([]);
 
   React.useEffect(() => {
-    const storedNotes = JSON.parse(localStorage.getItem('notes')) || [];
-    setNotes(storedNotes);
-  }, []);
+    const storedNotes = localStorage.getItem('notes');
+    const notesData = storedNotes ? decryptData(storedNotes, masterKey) : [];
+    setNotes(notesData);
+  }, [masterKey]);
 
   const handleOpen = (note, index) => {
     setCurrentNote({
       ...note,
       index,
     });
-    setEditMode(index !== null); // Set editMode to true if an index is provided
+    setEditMode(index !== null);
     setOpen(true);
   };
 
@@ -53,23 +80,23 @@ function Notes() {
   };
 
   const handleSave = () => {
-    let updatedNotes;
-    if (editMode) {
-      updatedNotes = notes.map((note, index) =>
-        index === currentNote.index ? { ...note, title: currentNote.title, description: currentNote.description } : note
-      );
-    } else {
-      updatedNotes = [...notes, currentNote];
-    }
+    const updatedNotes = editMode
+      ? notes.map((note, index) =>
+          index === currentNote.index
+            ? { ...note, title: currentNote.title, description: currentNote.description, date: getCurrentDate() }
+            : note
+        )
+      : [...notes, { ...currentNote, date: getCurrentDate() }];
+
     setNotes(updatedNotes);
-    localStorage.setItem('notes', JSON.stringify(updatedNotes));
+    localStorage.setItem('notes', encryptData(updatedNotes, masterKey));
     handleClose();
   };
 
   const handleDelete = () => {
     const updatedNotes = notes.filter((_, index) => index !== currentNote.index);
     setNotes(updatedNotes);
-    localStorage.setItem('notes', JSON.stringify(updatedNotes));
+    localStorage.setItem('notes', encryptData(updatedNotes, masterKey));
     handleClose();
   };
 
@@ -81,7 +108,7 @@ function Notes() {
         aria-labelledby="modal-modal-title-add"
         aria-describedby="modal-modal-description-add"
       >
-        <Box sx={style}>
+        <Box sx={classes.modalStyle}>
           <Typography id="modal-modal-title-add" variant="h6" component="h2">
             {editMode ? t('Edit Note') : t('Add Note')}
           </Typography>
@@ -142,7 +169,7 @@ function Notes() {
             title={note.title}
             date={note.date || 'No Date'}
             description={note.description}
-            onClick={() => handleOpen(note, index)} // Ensure onClick is passed to Note
+            onClick={() => handleOpen(note, index)}
           />
         ))}
       </Grid>

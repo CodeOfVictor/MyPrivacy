@@ -1,11 +1,17 @@
 {
-    "AppName": "MyPrivacy",
+    "AppName": "MeinePrivatsphäre",
     "Open settings": "Einstellungen öffnen",
+
+    "Password": "Passwort",
+    "Login": "Einloggen",
+    "Reset": "Zurücksetzen",
+    "ClearData": "Daten gelöscht, bitte geben Sie ein neues Passwort ein, um neu zu starten.",
+    "ErrorPassword": "Passwort falsch. Bitte versuche es erneut.",
 
     "Calendar": "Kalender",
     "Events": "Veranstaltungen",
     "Notes": "Notizen",
-    "To do": "Aufgaben",
+    "To do": "Zu erledigen",
 
     "Options": "Optionen",
     "Logout": "Abmelden",

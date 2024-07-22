@@ -9,7 +9,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    width: '90%',
+    maxWidth: 600,
     bgcolor: 'background.paper',
     border: '2px solid #1976d2',
     boxShadow: 24,
@@ -26,6 +27,13 @@ function Options({ open, handleClose }) {
         setLanguage(selectedLanguage);
         i18n.changeLanguage(selectedLanguage);
         localStorage.setItem('i18nextLng', selectedLanguage); // Save the selected language to localStorage
+    };
+
+    const handleDeleteAll = () => {
+        localStorage.removeItem('events');
+        localStorage.removeItem('notes');
+        localStorage.removeItem('tasks');
+        window.location.reload();
     };
 
     return (
@@ -66,7 +74,9 @@ function Options({ open, handleClose }) {
 
                     <Stack direction="row" alignItems="center" spacing={2}>
                         <Typography>{i18n.t('Delete All')}</Typography>
-                        <Button color="error" endIcon={<DeleteIcon />}>{i18n.t('DELETE')}</Button>
+                        <Button color="error" endIcon={<DeleteIcon />} onClick={handleDeleteAll}>
+                            {i18n.t('DELETE')}
+                        </Button>
                     </Stack>
                 </Stack>
 

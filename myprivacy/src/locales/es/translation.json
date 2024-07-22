@@ -1,11 +1,17 @@
 {
-    "AppName": "MyPrivacy",
-    "Open settings": "Abrir ajustes",
+    "AppName": "MiPrivacidad",
+    "Open settings": "Abrir configuración",
+
+    "Password": "Contraseña",
+    "Login": "Iniciar sesión",
+    "Reset": "Restablecer",
+    "ClearData": "Datos borrados, por favor ingrese una nueva contraseña para comenzar de nuevo.",
+    "ErrorPassword": "Contraseña incorrecta. Por favor, inténtalo de nuevo.",
 
     "Calendar": "Calendario",
     "Events": "Eventos",
     "Notes": "Notas",
-    "To do": "Pendiente",
+    "To do": "Por hacer",
 
     "Options": "Opciones",
     "Logout": "Cerrar sesión",
@@ -27,12 +33,12 @@
     "Edit": "Editar",
     "Delete": "Eliminar",
     "Completed": "Completado",
-    "Next days": "Próximos 7 días",
+    "Next days": "Próximos días",
 
-    "Add Task": "Añadir tarea",
+    "Add Task": "Agregar tarea",
     "Edit Task": "Editar tarea",
-    "Add Note": "Añadir nota",
+    "Add Note": "Agregar nota",
     "Edit Note": "Editar nota",
-    "Add Event": "Añadir evento",
+    "Add Event": "Agregar evento",
     "Edit Event": "Editar evento"
 }

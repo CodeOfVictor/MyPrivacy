@@ -39,6 +39,8 @@ function Navbar({ setActiveComponent, openOptionsModal }) {
     const handleSettingClick = (setting) => {
         if (setting === 'Options') {
             openOptionsModal();
+        } else if (setting === 'Logout') {
+            window.location.reload();
         }
         handleCloseUserMenu();
     };
@@ -165,4 +167,5 @@ function Navbar({ setActiveComponent, openOptionsModal }) {
         </AppBar>
     );
 }
+
 export default Navbar;

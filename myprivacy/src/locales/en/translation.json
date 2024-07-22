@@ -2,6 +2,12 @@
     "AppName": "MyPrivacy",
     "Open settings": "Open settings",
 
+    "Password": "Password",
+    "Login": "Login",
+    "Reset": "Reset",
+    "ClearData": "Data cleared, please enter a new password to start over.",
+    "ErrorPassword": "Password incorrect. Please try again.",
+
     "Calendar": "Calendar",
     "Events": "Events",
     "Notes": "Notes",

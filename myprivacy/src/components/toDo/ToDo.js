@@ -1,23 +1,49 @@
 import * as React from 'react';
-import { Grid, Typography, Button, Modal, Box, Stack, TextField, Checkbox } from '@mui/material';
+import CryptoJS from 'crypto-js';
+import { Grid, Typography, Button, Modal, Box, Stack, TextField, Checkbox, useTheme } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Task from './Task';
 import { useTranslation } from 'react-i18next';
 
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #1976d2',
-  boxShadow: 24,
-  p: 4,
+const useStyles = (theme) => ({
+  modalStyle: {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '90%',
+    maxWidth: 600, // Max width for larger screens
+    bgcolor: 'background.paper',
+    border: `2px solid ${theme.palette.primary.main}`,
+    boxShadow: 24,
+    p: 4,
+    [theme.breakpoints.down('sm')]: {
+      width: '95%', // Adjust width for smaller screens
+    },
+  },
+});
+
+const encryptData = (data, masterKey) => {
+  return CryptoJS.AES.encrypt(JSON.stringify(data), masterKey).toString();
 };
 
-function ToDo() {
+const decryptData = (ciphertext, masterKey) => {
+  const bytes = CryptoJS.AES.decrypt(ciphertext, masterKey);
+  return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+};
+
+const getCurrentDate = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0');
+  const day = String(today.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+};
+
+function ToDo({ masterKey }) {
+  const theme = useTheme();
+  const classes = useStyles(theme);
   const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const [editMode, setEditMode] = React.useState(false);
@@ -25,16 +51,17 @@ function ToDo() {
   const [tasks, setTasks] = React.useState([]);
 
   React.useEffect(() => {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    setTasks(storedTasks);
-  }, []);
+    const storedTasks = localStorage.getItem('tasks');
+    const tasksData = storedTasks ? decryptData(storedTasks, masterKey) : [];
+    setTasks(tasksData);
+  }, [masterKey]);
 
   const handleOpen = (task, index) => {
     setCurrentTask({
       ...task,
       index,
     });
-    setEditMode(index !== null); // Set editMode to true if an index is provided
+    setEditMode(index !== null);
     setOpen(true);
   };
 
@@ -56,20 +83,22 @@ function ToDo() {
     let updatedTasks;
     if (editMode) {
       updatedTasks = tasks.map((task, index) =>
-        index === currentTask.index ? { ...task, title: currentTask.title, description: currentTask.description, state: currentTask.state } : task
+        index === currentTask.index
+          ? { ...task, title: currentTask.title, description: currentTask.description, state: currentTask.state, date: getCurrentDate() }
+          : task
       );
     } else {
-      updatedTasks = [...tasks, { ...currentTask, state: false }]; // Ensure new tasks are not marked as complete
+      updatedTasks = [...tasks, { ...currentTask, state: false, date: getCurrentDate() }];
     }
     setTasks(updatedTasks);
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    localStorage.setItem('tasks', encryptData(updatedTasks, masterKey));
     handleClose();
   };
 
   const handleDelete = () => {
     const updatedTasks = tasks.filter((_, index) => index !== currentTask.index);
     setTasks(updatedTasks);
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    localStorage.setItem('tasks', encryptData(updatedTasks, masterKey));
     handleClose();
   };
 
@@ -78,7 +107,7 @@ function ToDo() {
       i === index ? { ...task, state: !task.state } : task
     );
     setTasks(updatedTasks);
-    localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+    localStorage.setItem('tasks', encryptData(updatedTasks, masterKey));
   };
 
   return (
@@ -89,7 +118,7 @@ function ToDo() {
         aria-labelledby="modal-modal-title-add"
         aria-describedby="modal-modal-description-add"
       >
-        <Box sx={style}>
+        <Box sx={classes.modalStyle}>
           <Typography id="modal-modal-title-add" variant="h6" component="h2">
             {editMode ? t('Edit Task') : t('Add Task')}
           </Typography>
@@ -113,15 +142,18 @@ function ToDo() {
               multiline
               rows={4}
             />
-            <Box>
-              <Checkbox
-                name="state"
-                checked={currentTask.state}
-                onChange={handleChange}
-                disabled={!editMode} // Allow editing only in edit mode
-              />
-              {t('Completed')}
-            </Box>
+            {editMode ? 
+              <Box>
+                <Checkbox
+                  name="state"
+                  checked={currentTask.state}
+                  onChange={handleChange}
+                  disabled={!editMode}
+                />
+                {t('Completed')}
+              </Box>
+            : null
+            }
           </Stack>
 
           <Stack direction="row" spacing={2} sx={{ mt: 3 }}>
@@ -162,10 +194,10 @@ function ToDo() {
             description={task.description}
             onClick={(event) => {
               if (event.target.type !== 'checkbox') {
-                handleOpen(task, index); // Open modal if not checkbox
+                handleOpen(task, index);
               }
             }}
-            onCheckboxChange={() => handleCheckboxChange(index)} // Pass function to handle checkbox change
+            onCheckboxChange={() => handleCheckboxChange(index)}
           />
         ))}
       </Grid>
