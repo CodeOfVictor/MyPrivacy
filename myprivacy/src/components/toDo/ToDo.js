@@ -14,7 +14,7 @@ function Notes() {
     <Grid container>
       <Grid container style={{ justifyContent: 'space-between', marginTop: '1%', marginBottom: '1%' }} alignItems="center">
         <Grid item style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1, marginRight: '-2%' }}>
-          <Typography variant="h4" style={{ textAlign: 'center', width: '100%' }}>To Do</Typography>
+          <Typography variant="h4" style={{ textAlign: 'center', width: '100%' }} color="text.secondary">To Do</Typography>
         </Grid>
         <Grid item style={{ marginRight: '2%' }}>
           <Button

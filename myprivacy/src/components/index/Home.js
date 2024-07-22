@@ -1,6 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Box } from '@mui/material';
-import Button from '@mui/material/Button';
+import { Grid, Typography, Box, Button } from '@mui/material';
 
 function Home() {
   return (
@@ -19,39 +18,48 @@ function Home() {
             transform: 'translate(-50%, -50%)',
             color: 'white',
             backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            padding: 10,
+            padding: { xs: 2, sm: 4, md: 6, lg: 8 },
             borderRadius: 1,
             textAlign: 'center',
+            width: { xs: '90%', sm: '80%', md: '70%' },
           }}
         >
-            <Typography variant="h1" style={{marginBottom: '40px'}}>MyPrivacy</Typography>
-            
-            <Typography variant="h4">Your management space</Typography>
-            <Typography variant="h4">Focused on privacy</Typography>
+          <Typography variant="h2" sx={{ mb: 4 }}>
+            MyPrivacy
+          </Typography>
 
-            <Button variant="contained" 
-              style={{
-                marginTop: '40px', 
-                padding: '16px 32px',
-                fontSize: '18px'
+          <Typography variant="h5" sx={{ mb: 2 }}>
+            Your management space
+          </Typography>
+          <Typography variant="h5" sx={{ mb: 4 }}>
+            Focused on privacy
+          </Typography>
+
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexDirection: { xs: 'column', sm: 'row' }, mt: 2 }}>
+            <Button
+              variant="contained"
+              sx={{
+                px: 4,
+                py: 2,
+                fontSize: { xs: '14px', sm: '16px', md: '18px' },
               }}
             >
               Coming soon
             </Button>
 
-            <Button 
-              variant="contained" 
+            <Button
+              variant="contained"
               color="secondary"
-              style={{
-                marginTop: '20px', 
-                padding: '16px 32px',
-                fontSize: '18px'
+              sx={{
+                px: 4,
+                py: 2,
+                fontSize: { xs: '14px', sm: '16px', md: '18px' },
               }}
               onClick={() => window.open('https://github.com/CodeOfVictor/MyPrivacy', '_blank')}
             >
               Github project
             </Button>
-
+          </Box>
         </Box>
       </Grid>
     </Grid>

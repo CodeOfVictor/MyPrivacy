@@ -9,7 +9,7 @@ function Note({ title, date, description }) {
           <Typography variant="h5" component="div">
             {title}
           </Typography>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          <Typography sx={{ fontSize: 14 }} gutterBottom>
             {date}
           </Typography>
           <Typography variant="body2">

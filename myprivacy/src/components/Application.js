@@ -35,6 +35,10 @@ function Application() {
             background: {
                 default: darkMode ? '#000000' : '#ffffff', // Background color based on theme
             },
+            text: {
+                primary: darkMode ? '#ffffff' : '#000000',
+                secondary: '#1976D2',
+            },
         },
     });
 

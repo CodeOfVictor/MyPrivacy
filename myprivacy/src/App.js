@@ -10,8 +10,8 @@ function App() {
     <Grid className="App">
       <Router basename="/MyPrivacy">
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/app" element={<Application />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/app" element={<Application />} />
         </Routes>
       </Router>
     </Grid>

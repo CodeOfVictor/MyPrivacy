@@ -7,14 +7,13 @@ function Task({ state, title, date, description }) {
         <Box sx={{ minWidth: 275, marginBottom: '1%', marginLeft: '1%' }}>
             <Card variant="outlined">
                 <CardContent style={{ textAlign: 'center' }}>
-                    {/* Wrap the title in a Box to center it */}
                     <Box>
                         <Typography variant="h5" component="div">
                             <Checkbox />
                             {title}
                         </Typography>
                     </Box>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                    <Typography sx={{ fontSize: 14 }} gutterBottom>
                         {date}
                     </Typography>
                     <Typography variant="body2">

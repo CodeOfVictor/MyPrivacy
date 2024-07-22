@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Typography, Box, Button } from '@mui/material';
+import { Grid, Typography, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Note from './Note';
 
@@ -14,7 +14,7 @@ function Notes() {
     <Grid container>
       <Grid container style={{ justifyContent: 'space-between', marginTop: '1%', marginBottom: '1%' }} alignItems="center">
         <Grid item style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flex: 1, marginRight: '-2%' }}>
-          <Typography variant="h4" style={{ textAlign: 'center', width: '100%' }}>Notes</Typography>
+          <Typography variant="h4" style={{ textAlign: 'center', width: '100%' }} color="text.secondary">Notes</Typography>
         </Grid>
         <Grid item style={{ marginRight: '2%' }}>
           <Button

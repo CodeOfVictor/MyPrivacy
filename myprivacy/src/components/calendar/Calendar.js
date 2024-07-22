@@ -92,7 +92,7 @@ function Calendar() {
           </LocalizationProvider>
         </Box>
         <Box textAlign="center">
-          <Typography variant="h4" gutterBottom>Last 7 days</Typography>
+          <Typography variant="h4" gutterBottom color="textSecondary">Last 7 days</Typography>
           <Event date="1/1/1900" title="Accordion 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={true} />
           <Event date="1/1/1900" title="Accordion 2" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
           <Event date="1/1/1900" title="Accordion Actions" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
@@ -102,7 +102,7 @@ function Calendar() {
       {/* Events Column */}
       <Grid item xs={12} md={6}>
         <Box textAlign="center">
-          <Typography variant="h4" gutterBottom>Events</Typography>
+          <Typography variant="h4" gutterBottom color="textSecondary">Events</Typography>
           <Event date="1/1/1900" title="Accordion 1" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
           <Event date="1/1/1900" title="Accordion 2" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
           <Event date="1/1/1900" title="Accordion Actions" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex, sit amet blandit leo lobortis eget." defaultExpanded={false} />
