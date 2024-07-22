@@ -45,12 +45,12 @@ Under the following terms:
 
 - ✅ Create index
 - ✅ Create navbar
-- ❌ Add white and dark theme
-- ❌ Add language support
+- ✅ Add white and dark theme
+- ✅ Add language support
 - ✅ Add calendar with event system
-- ❌ Add notes
-- ❌ Add tasks to do
-- ❌ Add funcionality
+- ✅ Add notes
+- ✅ Add tasks to do
+- ✅ Add funcionality
 
 ---
 
