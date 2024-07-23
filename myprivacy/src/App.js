@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/#/app" element={<Application />} />
+          <Route path="/app" element={<Application />} />
         </Routes>
       </Router>
     </Grid>
