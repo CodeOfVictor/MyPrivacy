@@ -43,8 +43,9 @@ function Home() {
                 py: 2,
                 fontSize: { xs: '14px', sm: '16px', md: '18px' },
               }}
+              onClick={() => window.open('https://codeofvictor.github.io/MyPrivacy/app', '_blank')}
             >
-              Coming soon
+              Try it
             </Button>
 
             <Button
